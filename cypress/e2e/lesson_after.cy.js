@@ -10,23 +10,23 @@ describe('Проверка авторизации', function () {
         });
 
    it('Верный пароль и верный логин', function () {
-        cy.get('#mail').type('german@dolnikov.ru');
-        cy.get('#pass').type('iLoveqastudio1');
+        cy.get('#mail').type('sargamonovaolga.olga@yandex.ru');
+        cy.get('#pass').type('SHelga230408!');
         cy.get('#loginButton').click();
         cy.get('#messageHeader').should('be.visible');
         cy.get('#messageHeader').contains('Авторизация прошла успешно');
     })
 
       it('Верный логин и неверный пароль', function () {
-        cy.get('#mail').type('german@dolnikov.ru');
-        cy.get('#pass').type('iLoveqastudio2');
+        cy.get('#mail').type('sargamonovaolga.olga@yandex.ru');
+        cy.get('#pass').type('SHelga230408!01');
         cy.get('#loginButton').click();
         cy.get('#messageHeader').should('be.visible');
         cy.get('#messageHeader').contains('Такого логина или пароля нет');
     })
       it('Валидация на наличие @', function () {
-        cy.get('#mail').type('germandolnikov.ru');
-        cy.get('#pass').type('iLoveqastudio');
+        cy.get('#mail').type('sargamonovaolga.olgayandex.ru');
+        cy.get('#pass').type('SHelga230408!');
         cy.get('#loginButton').click();
         cy.get('#messageHeader').should('be.visible');
         cy.get('#messageHeader').contains('Нужно исправить проблему валидации');
@@ -34,7 +34,7 @@ describe('Проверка авторизации', function () {
 
        it('Восстановление пароля', function () {
         cy.get('#forgotEmailButton').click();
-        cy.get('#mailForgot').type('german@dolnikov.ru');
+        cy.get('#mailForgot').type('sargamonovaolga.olga@yandex.ru');
         cy.get('#restoreEmailButton').click();
         cy.get('#messageHeader').contains('Успешно отправили пароль на e-mail');
     })
